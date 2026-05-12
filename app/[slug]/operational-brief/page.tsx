@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,6 +8,10 @@ const briefs = {
     focus: "Partner intelligence for high-trust enterprise introductions.",
     status: "Live pilot",
     cadence: "Weekly operator sync",
+    image: {
+      alt: "Globe mark for Omnipair partner operations",
+      src: "/globe.svg",
+    },
     signal: "Warm intro conversion is up 18% across priority accounts.",
     priorities: [
       "Tighten account matching around regulated market operators.",
@@ -24,6 +29,10 @@ const briefs = {
     focus: "Decision support for finance, compliance, and procurement teams.",
     status: "Design validation",
     cadence: "Biweekly steering review",
+    image: {
+      alt: "Document mark for Solomon decision workflows",
+      src: "/file.svg",
+    },
     signal: "Controller interviews show strongest pull for variance narration.",
     priorities: [
       "Finish approval workflow mapping with compliance stakeholders.",
@@ -41,6 +50,10 @@ const briefs = {
     focus: "Operational planning for energy, field service, and logistics crews.",
     status: "Prototype",
     cadence: "Daily field feedback",
+    image: {
+      alt: "Window mark for Avici operations planning",
+      src: "/window.svg",
+    },
     signal: "Dispatch teams are using exception views before morning standup.",
     priorities: [
       "Add route risk summaries for weather and asset constraints.",
@@ -58,6 +71,10 @@ const briefs = {
     focus: "Governance operations for proposal markets and treasury decisions.",
     status: "Community review",
     cadence: "Monthly governance cycle",
+    image: {
+      alt: "Globe mark for MetaDAO governance operations",
+      src: "/globe.svg",
+    },
     signal: "Proposal authors need clearer pre-vote readiness checkpoints.",
     priorities: [
       "Separate treasury proposals from protocol parameter changes.",
@@ -167,16 +184,30 @@ export default async function OperationalBriefPage({
             </div>
           </section>
 
-          <aside className="border border-white/10 bg-white/[0.04] p-6">
-            <p className="text-sm font-medium text-neutral-400">Current signal</p>
-            <p className="mt-4 text-2xl font-semibold leading-9 text-white">
-              {brief.signal}
-            </p>
-            <div className="mt-8 border-t border-white/10 pt-5">
-              <p className="text-sm text-neutral-400">Operating cadence</p>
-              <p className="mt-2 text-lg font-medium text-neutral-100">
-                {brief.cadence}
+          <aside className="overflow-hidden border border-white/10 bg-white/[0.04]">
+            <div className="relative flex aspect-[4/3] items-center justify-center bg-neutral-100 p-10">
+              <Image
+                alt={brief.image.alt}
+                className="h-full w-full object-contain"
+                height={240}
+                priority
+                src={brief.image.src}
+                width={240}
+              />
+            </div>
+            <div className="p-6">
+              <p className="text-sm font-medium text-neutral-400">
+                Current signal
               </p>
+              <p className="mt-4 text-2xl font-semibold leading-9 text-white">
+                {brief.signal}
+              </p>
+              <div className="mt-8 border-t border-white/10 pt-5">
+                <p className="text-sm text-neutral-400">Operating cadence</p>
+                <p className="mt-2 text-lg font-medium text-neutral-100">
+                  {brief.cadence}
+                </p>
+              </div>
             </div>
           </aside>
         </div>
